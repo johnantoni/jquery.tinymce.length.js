@@ -33,25 +33,29 @@ $("textarea.tinymce").tinymce({
     paste_remove_styles: true,
 
     // Dimensions
-    width: "600",
+    width: "500",
     height: "300",
 
     setup: function(ed) {
-        this.textLimit = 100;
+        this.textLimit = 1000;
         ed.onKeyUp.add(function(ed, e) {
-            var strip = (tinyMCE.activeEditor.getContent()).replace(/(<([^>]+)>)/ig, "");
+            var editorId = tinyMCE.activeEditor.editorId;
+            var preStrip = tinyMCE.activeEditor.getContent();
+            
+            var strip = preStrip.replace(/(<([^>]+)>)/ig, "");
             if (strip.length > this.textLimit) {
-                var txt = this.prevText; //strip.substring(0, this.textLimit);
+                var txt = $(this).data(editorId); //strip.substring(0, this.textLimit);
                 tinyMCE.execCommand('mceSetContent', false, txt);
-
                 tinymce.DOM.setHTML(tinymce.DOM.get(tinyMCE.activeEditor.id + '_path_row'), "Reached text limit of " + this.textLimit + " characters");
                 return false;
             }
             else {
                 var text = (this.textLimit - strip.length) + " Characters left"
                 tinymce.DOM.setHTML(tinymce.DOM.get(tinyMCE.activeEditor.id + '_path_row'), text);
-                this.prevText = strip;
+                
+                $(this).data(editorId, preStrip);
             }
         });
     }
+      
 });
