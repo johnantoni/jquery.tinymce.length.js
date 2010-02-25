@@ -1,13 +1,21 @@
 Sample code for TinyMCE control
 
-Displays status bar at bottom showing how many characters left, 
-if the limit is exceeded a copy of the previous input replaces 
-the current one; stoping the user from entering more.
+Displays status bar at bottom showing how many characters left, if the limit is 
+exceeded a copy of the previous input replaces the current one; stoping the user
+from entering more.
 
-Ok, not the best but works pretty well for something that's
-supposedly impossible to do, apparently ;-)
+Ok, not the best but works pretty well for something that's supposedly impossible 
+to do, apparently ;-)
 
 P.S.
 
-Requires jQuery as it uses $(this).data() to store & retrieve a
-copy of the original input, based on the element's ID.
+Requires jQuery as it uses $(this).data() to store & retrieve a copy of the 
+original input, based on the element's ID.
+
+
+how to use?
+-----------
+change this.textLimit value to whatever you want as the limit for your textboxes
+
+then create your textbox elements and add a class 'tinymce' to the one's you want
+to embed the tinymce control with.
