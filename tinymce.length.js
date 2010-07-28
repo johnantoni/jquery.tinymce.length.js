@@ -22,7 +22,7 @@ $("textarea.tinymce").tinymce({
     theme_advanced_toolbar_align: "left",
 
     // Plugins
-    plugins: "paste,safari",
+    plugins: "paste,safari,tabfocus",
 
     // Paste
     paste_use_dialog: false,
