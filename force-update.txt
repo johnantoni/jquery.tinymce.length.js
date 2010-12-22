@@ -1,0 +1,5 @@
+var content = tinyMCE.activeEditor.getContent();
+
+$("textarea.tinymce").val(content);
+
+tinyMCE.triggerSave();
